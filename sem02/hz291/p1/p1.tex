@@ -1,0 +1,157 @@
+\documentclass[
+    article,
+    11pt,
+    oneside,
+    a4paper,
+    english,
+    brazil,
+    sumario=tradicional
+    ]{abntex2}
+
+
+% Pacotes fundamentais
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{nomencl}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{microtype}
+
+% Pacotes adicionais
+\usepackage{lipsum}
+\usepackage[brazilian,hyperpageref]{backref}
+\usepackage[alf]{abntex2cite}
+
+% Configurações do pacote backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+\renewcommand{\backref}{}
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+
+% Informações para capa e folha de rosto
+\titulo{A Enganosa Simplicidade do ODS 5}
+\tituloestrangeiro{}
+
+\autor{Pedro Sader Azevedo}
+\local{Brasil}
+
+% Configurações de aparência do PDF final
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title},
+		pdfauthor={\@author},
+    	pdfsubject={A complexidade do problema da desigualdade salarial entre homens e mulheres},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={ods}{igualdade de gênero}{salário}{ocupação},
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ---
+% Altera as margens padrões
+% ---
+\setlrmarginsandblock{3cm}{3cm}{*}
+\setulmarginsandblock{3cm}{3cm}{*}
+\checkandfixthelayout
+% ---
+
+% ---
+% Espaçamentos entre linhas e parágrafos
+% ---
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% Espaçamento simples
+\SingleSpacing
+
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% página de titulo principal (obrigatório)
+\maketitle
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+Este documento e seu código-fonte são exemplos de referência de uso da classe
+\textsf{abntex2} e do pacote \textsf{abntex2cite}. O documento exemplifica a
+elaboração de publicação periódica científica impressa produzida conforme a ABNT
+NBR 6022:2018 \emph{Informação e documentação - Artigo em publicação periódica
+científica - Apresentação}.
+
+A expressão ``Modelo canônico'' é utilizada para indicar que \abnTeX\ não é
+modelo específico de nenhuma universidade ou instituição, mas que implementa tão
+somente os requisitos das normas da ABNT. Uma lista completa das normas
+observadas pelo \abnTeX\ é apresentada em \citeonline{abntex2classe}.
+
+Sinta-se convidado a participar do projeto \abnTeX! Acesse o site do projeto em
+\url{http://www.abntex.net.br/}. Também fique livre para conhecer,
+estudar, alterar e redistribuir o trabalho do \abnTeX, desde que os arquivos
+modificados tenham seus nomes alterados e que os créditos sejam dados aos
+autores originais, nos termos da ``The \LaTeX\ Project Public
+License''\footnote{\url{http://www.latex-project.org/lppl.txt}}.
+
+Encorajamos que sejam realizadas customizações específicas deste documento.
+Porém, recomendamos que ao invés de se alterar diretamente os arquivos do
+\abnTeX, distribua-se arquivos com as respectivas customizações. Isso permite
+que futuras versões do \abnTeX~não se tornem automaticamente incompatíveis com
+as customizações promovidas. Consulte
+para mais informações.
+
+Este exemplo deve ser utilizado como complemento do manual da classe
+\textsf{abntex2}, dos manuais do pacote
+\textsf{abntex2cite} e do manual da classe
+\textsf{memoir}. Consulte o \citeonline{abntex2modelo} para obter
+exemplos e informações adicionais de uso de \abnTeX\ e de \LaTeX.
+
+\pagebreak
+
+\postextual
+
+\bibliography{ref}
+
+\end{document}
