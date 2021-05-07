@@ -29,7 +29,7 @@ def lefetivo_ressoador(l: float, r: float) -> float:
     """
     return l + 1.45*r
 
-def incerteza_triangular(v: float) -> float:
+def incerteza_padrao_triangular(v: float) -> float:
     """ Determina a incerteza padrao associada a uma medida cuja funcao de
     distribuicao de probabilidade e triangular. Isso ocorre, por exemplo, em
     instrumentos analogicos
@@ -42,7 +42,7 @@ def incerteza_triangular(v: float) -> float:
     """
     return v/(6**0.5)
 
-def incerteza_quadrada(v: float) -> float:
+def incerteza_padrao_quadrada(v: float) -> float:
     """ Determina a incerteza padrao associada a uma medida cuja funcao de
     distribuicao de probabilidade e quadrada. Isso ocorre, por exemplo, em
     instrumentos de medida digitais
@@ -56,7 +56,7 @@ def incerteza_quadrada(v: float) -> float:
     """
     return v/(3**0.5)
 
-def incerteza_padrao(l: List[Tuple[float, float]]) -> float:
+def incerteza_padrao_combinada(l: List[Tuple[float, float]]) -> float:
     """ Avalia a incerteza padrao combinada para uma grandeza, dadas uma lista
     de coeficientes de sensibilidade e incertezas padrao
 
