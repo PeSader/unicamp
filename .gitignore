@@ -5,3 +5,6 @@
 *.brf
 *.idx
 *.log
+
+#LibreOffice
+.~lock.*
