@@ -6,5 +6,8 @@
 *.idx
 *.log
 
-#LibreOffice
+# LibreOffice
 .~lock.*
+
+# Python
+*.pyc
