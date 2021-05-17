@@ -1,5 +1,5 @@
 \documentclass[
-    article,
+    report,
     11pt,
     oneside,
     a4paper,
@@ -16,8 +16,9 @@
 \usepackage{indentfirst}
 \usepackage{nomencl}
 \usepackage{color}
-\usepackage{graphicx}
 \usepackage{microtype}
+\usepackage{graphicx}
+\graphicspath{{img/}}
 
 % Pacotes adicionais
 \usepackage{lipsum}
@@ -28,7 +29,7 @@
 \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
 \renewcommand{\backref}{}
 \renewcommand*{\backrefalt}[4]{
-    \ifcase #1 %
+    \ifcase #1
         Nenhuma citação no texto.
     \or
         Citado na página #2.
@@ -36,12 +37,11 @@
         Citado #1 vezes nas páginas #2.
     \fi}%
 
-% Informações para capa e folha de rosto
-% \title{\textbf{Centralização} \\ \Large{O Maior Agravante da Invasão de Privacidade em Meios Digitais}}
-\title{\textbf{Como o GDPR falhou} \\ \Large{E como podemos suceder}}
-\tituloestrangeiro{}
+\title{Os Efeitos Adversos da GDPR}
+\tituloestrangeiro{\textbf{How the GDPR Failed} \\ \Large{And how we can still succeed}}
 
 \autor{Pedro Sader Azevedo}
+\instituicao{Universidade Estadual de Campinas}
 \local{Brasil}
 
 % Configurações de aparência do PDF final
@@ -85,7 +85,6 @@
 
 \begin{document}
 
-%\selectlanguage{english}
 \selectlanguage{brazil}
 
 \frenchspacing
@@ -94,7 +93,19 @@
 
 \textual
 
-A Regulamentação Geral de Proteção de Dados (GDPR) é uma lei Europeia
+A Regulamentação Geral de Proteção de Dados (GDPR) foi a principal política pública europeia referente à questão da privacidade digital~\cite{gdpr}. Essa lei foi tomada como referência em diversas partes do mundo, inclusive servindo de base para a criação da Lei Geral de Proteção de Dados no Brasil~\cite{lgpd}. No entanto, as medidas estabelecidas pela GDPR provaram-se não apenas ineficazes em ampliar o respeito pelo Direito Humano à privacidade, como também introduziram novos empecilhos a conquista desse direito.
+
+Uma das mais emblemáticas resoluções da GDPR foi a proibição da coleta de dados pessoais sem consentimento explícito~\cite{data-consent}. Apesar de ``bem-intencionada'', essa imposição teve como efeito adverso uma abundância desmedida de \textit{cookie popups}, isto é, mensagens que cobrem o conteúdo de páginas da web até que o usuário ceda a permissão para coleta e processamento de seus dados.
+
+\begin{figure}[h]
+    \includegraphics[width=\textwidth]{cookies.png}
+    \centering
+    \caption{A Internet depois da GDPR (autoral)}
+\end{figure}
+
+Consequência imediata disso foi uma queda dramática na qualidade da experiência de usuário, visto que interrupções constantes se tornaram regra (ou melhor, lei), em vez de excessão. Prova desse incômodo, é que extensões de navegador, como a genial \textit{I don't care about cookies}~\cite{i-dont-care-about-cookies}, foram desenvolvidas para remover esse tipo de distração. Ademais, estudos apontam que mencionar ``personalização'' ou ``aprimoramento de serviços'' aumenta significativamente o poder persuasivo dos \textit{cookie banners}~\cite{cookie-strategies}, muitas vezes levando à decisão mal-informada de consentir.
+
+Enfim, por mais que a GDPR não tenha sido perfeita, é inegável sua importância para a questão da privacidade digital. No mínimo, ela desencadeou a tendência de regulamentar mais estritamente os mercado digitais \cite{dma} e, por isso, merece crédito.
 
 \pagebreak
 
