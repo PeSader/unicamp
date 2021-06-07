@@ -1,0 +1,112 @@
+\documentclass[
+    report,
+    11pt,
+    oneside,
+    a4paper,
+    english,
+    brazil,
+    sumario=tradicional
+    ]{abntex2}
+
+
+% Pacotes fundamentais
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{nomencl}
+\usepackage{color}
+\usepackage{microtype}
+\usepackage{graphicx}
+\graphicspath{{img/}}
+
+% Pacotes adicionais
+\usepackage{lipsum}
+\usepackage[brazilian,hyperpageref]{backref}
+\usepackage[alf]{abntex2cite}
+
+% Configurações do pacote backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+\renewcommand{\backref}{}
+\renewcommand*{\backrefalt}[4]{
+    \ifcase #1
+        Nenhuma citação no texto.
+    \or
+        Citado na página #2.
+    \else
+        Citado #1 vezes nas páginas #2.
+    \fi}%
+
+\title{Viés da Negatividade nas Redes Sociais}
+\tituloestrangeiro{\textbf{How the GDPR Failed} \\ \Large{And how we can still succeed}}
+
+\autor{Pedro Sader Azevedo}
+\instituicao{Universidade Estadual de Campinas}
+\local{Brasil}
+
+% Configurações de aparência do PDF final
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+\makeatletter
+\hypersetup{
+   pagebackref=true,
+   pdftitle={\@title},
+   pdfauthor={\@author},
+   pdfsubject={A complexidade do problema da desigualdade salarial entre homens e mulheres},
+   pdfcreator={LaTeX with abnTeX2},
+   pdfkeywords={ods}{gênero}{salário}{ocupação},
+   colorlinks=true, % false: boxed links; true: colored links
+   linkcolor=blue, % color of internal links
+   citecolor=blue, % color of links to bibliography
+   filecolor=magenta, % color of file links
+   urlcolor=blue,
+   bookmarksdepth=4
+}
+\makeatother
+
+% compila o indice
+\makeindex
+
+% margens
+\setlrmarginsandblock{3cm}{3cm}{*}
+\setulmarginsandblock{3cm}{3cm}{*}
+\checkandfixthelayout
+
+% tamanho da indentação
+\setlength{\parindent}{1.3cm}
+
+% espaçamento entre parágrafos
+\setlength{\parskip}{0.2cm}
+% \setlength{\onelineskip}
+
+\SingleSpacing
+
+
+\begin{document}
+
+\selectlanguage{brazil}
+
+\frenchspacing
+
+\maketitle
+
+\textual
+
+
+\begin{figure}[htb]
+    \caption{\label{charge}``Redes Sociais''}
+    \includegraphics[width=\textwidth]{charge.jpg}
+    \fonte[Fonte\footnotemark]{Blog do AFTM.}
+\end{figure}
+
+\footnotetext{Disponível em \url{https://blogdoaftm.com.br/charge-redes-sociais/}. Acesso em: 7 jun. 2021}
+
+
+\pagebreak
+
+\postextual
+
+\bibliography{p3}
+
+\end{document}
