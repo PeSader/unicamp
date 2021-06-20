@@ -33,7 +33,10 @@ ax1.set_xlabel('Time (s)',fontsize=12)
 #ax1.set_xlim(0,0.75)
 
 plt.tight_layout()
-plt.show()
+# plt.show()
+
+def exp_cooling(t,T0,T_inf,gamma):
+    return (T0-T_inf)*np.exp(-gamma*t)+T_inf
 
 def cooling(t,T0,A,B,C,m):
     return T0+(A/(B+C*t)**m)
