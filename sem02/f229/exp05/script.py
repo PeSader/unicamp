@@ -74,7 +74,7 @@ cooling_model = lmfit.Model(cooling)
 print('parameter names: {}'.format(cooling_model.param_names))
 print('independent variables: {}'.format(cooling_model.independent_vars))
 
-cooling_model.set_param_hint('m', value=1/4, vary=True, min=1/6, max=1/3)
+cooling_model.set_param_hint('m', value=3, vary=True, min=6, max=4)
 cooling_model.set_param_hint('T0', value=350, vary=True)
 cooling_model.set_param_hint('A', value=523, min=0.0001, vary=True)
 cooling_model.set_param_hint('B', value=350, min=1, vary=True)
