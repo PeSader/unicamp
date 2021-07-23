@@ -13,13 +13,15 @@ Quadrado da Diferença da Previsão e do Modelo: 1.104620973491319
 Chi Square Test: 0.06158282984642778
 Quadrado da Diferença da Previsão e do Modelo: 1.4792902265898322
 
-### Gráfico
-
-![](img/calorímetro_fechado_ajuste.png)
-
 ### Veredito
 
 O melhor Modelo foi o 2, pelo Teste de Associação ( ou "do Chi-Quadrado")
+
+### Gráficos
+
+| Ajuste não-linear | Ajuste linear |
+| ----------------- | ------------- |
+| ![](img/calorímetro_fechado_ajuste.png) | ![](img/calorímetro_fechado_linear.png) |
 
 ## Fôrma de Alumínio 
 
@@ -33,13 +35,15 @@ Quadrado da Diferença da Previsão e do Modelo: 4.514882711049803
 Chi Square Test: 101.91387982003492
 Quadrado da Diferença da Previsão e do Modelo: 9.081764083837381
 
-### Gráfico
-
-![](img/fôrma_de_alumínio_ajuste.png)
-
 ### Veredito
 
 O melhor Modelo foi o 1, pelo Teste de Associação (ou "do Chi-Quadrado")e pelo Teste do Último Valor
+
+### Gráficos
+
+| Ajuste não-linear | Ajuste linear |
+| ----------------- | ------------- |
+| ![](img/fôrma_de_alumínio_ajuste.png) | ![](img/fôrma_de_alumínio_linear.png) |
 
 ## Garrafa Térmica Aberta 
 
@@ -53,13 +57,15 @@ Quadrado da Diferença da Previsão e do Modelo: 4.113863164063553
 Chi Square Test: 0.01039551270531944
 Quadrado da Diferença da Previsão e do Modelo: 0.8010354166542702
 
-### Gráfico
-
-![](img/garrafa_térmica_aberta_ajuste.png)
-
 ### Veredito
 
 O melhor Modelo foi o 2, pelo Teste de Associação ( ou "do Chi-Quadrado") e pelo Teste do Último Valor
+
+### Gráficos
+
+| Ajuste não-linear | Ajuste linear |
+| ----------------- | ------------- |
+| ![](img/garrafa_térmica_aberta_ajuste.png) | ![](img/garrafa_térmica_aberta_linear.png) |
 
 ## Garrafa Térmica Fechada 
 
@@ -73,13 +79,15 @@ Quadrado da Diferença da Previsão e do Modelo: 1.757390499390526
 Chi Square Test: 0.020301720617134464
 Quadrado da Diferença da Previsão e do Modelo: 1.6447873872157857
 
-### Gráfico
-
-![](img/garrafa_térmica_fechada_ajuste.png)
-
 ### Veredito
 
 O melhor Modelo foi o 2, pelo Teste de Associação ( ou "do Chi-Quadrado") e pelo Teste do Último Valor
+
+### Gráficos
+
+| Ajuste não-linear | Ajuste linear |
+| ----------------- | ------------- |
+| ![](img/garrafa_térmica_fechada_ajuste.png) | ![](img/garrafa_térmica_fechada_linear.png) |
 
 ## Termômetro 
 
@@ -93,13 +101,15 @@ Quadrado da Diferença da Previsão e do Modelo: 9.068402306878975
 Chi Square Test: 31.87183566514953
 Quadrado da Diferença da Previsão e do Modelo: 5.062371803415205
 
-### Gráfico
-
-![](img/termômetro_ajuste.png)
-
 ### Veredito
 
 O melhor Modelo foi o 2, pelo Teste de Associação ( ou "do Chi-Quadrado") e pelo Teste do Último Valor
+
+### Gráficos
+
+| Ajuste não-linear | Ajuste linear |
+| ----------------- | ------------- |
+| ![](img/termômetro_ajuste.png) | ![](img/termômetro_linear.png) |
 
 ## Calorímetro Aberto 
 
@@ -113,10 +123,12 @@ Quadrado da Diferença da Previsão e do Modelo: 3.557632153932195
 Chi Square Test: 1.612758601496624
 Quadrado da Diferença da Previsão e do Modelo: 5.243964665149307
 
-### Gráfico
-
-![](img/calorímetro_aberto_ajuste.png)
-
 ### Veredito
 
 O melhor Modelo foi o 2, pelo Teste de Associação ( ou "do Chi-Quadrado")
+
+### Gráficos
+
+| Ajuste não-linear | Ajuste linear |
+| ----------------- | ------------- |
+| ![](img/calorímetro_aberto_ajuste.png) | ![](img/calorímetro_aberto_linear.png) |
