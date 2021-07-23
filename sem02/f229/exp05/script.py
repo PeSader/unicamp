@@ -10,8 +10,7 @@ import pandas as pd
 import numpy as np
 import lmfit
 import os
-from uncertainties import ufloat
-from typing import Tuple
+from typing import Callable, Tuple
 
 DPI = 1200
 DATA_DIR = './data'
@@ -19,30 +18,59 @@ FILENAMES = os.listdir(DATA_DIR)
 REPORT_FILENAME = 'report.md'
 PREFIXO_TITULO_GRAFICO = 'Resfriamento de '
 VALORES_DE_M = [3, 4, 5, 6]
-NOME_DO_MODELO = {1: 'Condução e Convecção Forçada',
-                  2: 'Convecção Natural'}
+NOME_DO_MODELO = {1: 'Condução e Convecção Forçada', 2: 'Convecção Natural'}
 
 
 def main():
     # limpar arquivo do relatorio e inserir titulo
     with open(REPORT_FILENAME, 'w') as f:
         f.write('# Documento Auxiliar ao Relatório 5\n\n')
+    # iterar lista de arquivos com dados para analisa-los
     for f in FILENAMES:
         analize_data(f'./data/{f}')
 
 
-def exp_cooling(t, T0, T_inf, gamma):
-    """Modelo para transferencia de calor por conducao ou conveccao forcada
+def exp_cooling(t: float, T0: float, T_inf: float, gamma: float) -> float:
+    """modela transferencia de calor por conducao ou conveccao forcada
 
     :param t: tempo
+    :type t: float
     :param T0: temperatura inicial
+    :type T0: float
     :param T_inf: temperatura infinita
+    :type T_inf: float
     :param gamma: parametro que depende do coef. de transferencia de calor
+    :type gamma: float
+    :rtype: float
     """
     return (T0-T_inf)*np.exp(-gamma*t)+T_inf
 
 
-def fit_exp_cooling(func, x, y):
+def cooling(t: float, T0: float, A: float, B: float, C: float, m: int) -> float:
+    """modela transferencia de calor por conveccao natural
+
+    :param t: tempo
+    :type t: float
+    :param T0: temperatura inicial
+    :type T0: float
+    :param m: parametro inversamente proporcional ao coef. de transferencia de calor
+    :type m: int
+    :rtype: float
+    """
+    return T0+(A/(B+C*t)**m)
+
+
+def _fit_exp_cooling(func: Callable, tempo: np.ndarray, temperatura: np.ndarray) -> lmfit.model.ModelResult:
+    """configura um ajuste ao modelo de resfriamento por conducao ou conveccao forcada
+
+    :param func: modelo de resfriamento por conducao ou conveccao forcada
+    :type func: Callable
+    :param tempo: np.a variavel independente
+    :type tempo: ndarray
+    :param temperatura: np.a variavel dependente
+    :type temperatura: ndarray
+    :rtype: lmfit.model.ModelResult
+    """
     exp_model = lmfit.Model(func)
 
     # configurar limites maximos e minimos dos parametros
@@ -52,23 +80,25 @@ def fit_exp_cooling(func, x, y):
     exp_model.set_param_hint('gamma', value=0.001, min=0.0001, vary=True)
     param = exp_model.make_params()
 
-    results_exp_cooling = exp_model.fit(y, t=x, params=param)
+    results_exp_cooling = exp_model.fit(temperatura, t=tempo, params=param)
     print(results_exp_cooling.fit_report())
 
     return results_exp_cooling
 
 
-def cooling(t, T0, A, B, C, m):
-    """Modelo para transferencia de calor por conveccao natural
+def _fit_cooling(func: Callable, tempo: np.ndarray, temperatura: np.ndarray, m: int) -> lmfit.model.ModelResult:
+    """configura um ajuste ao modelo de resfriamento por conveccao natural
 
-    :param t: tempo
-    :param T0: temperatura inicial
+    :param func: modelo de resfriamento por conveccao natural
+    :type func: Callable
+    :param tempo: np.a variavel independente
+    :type tempo: ndarray
+    :param temperatura: np.a variavel dependente
+    :type temperatura: ndarray
     :param m: parametro inversamente proporcional ao coef. de transferencia de calor
+    :type m: int
+    :rtype: lmfit.model.ModelResult
     """
-    return T0+(A/(B+C*t)**m)
-
-
-def _fit_cooling(func, x, y, m):
     cooling_model = lmfit.Model(func)
     print('parameter names: {}'.format(cooling_model.param_names))
     print('independent variables: {}'.format(cooling_model.independent_vars))
@@ -79,11 +109,21 @@ def _fit_cooling(func, x, y, m):
     cooling_model.set_param_hint('C', value=0.00229893, min=0.0001, vary=True)
     cooling_model.set_param_hint('m', value=m, vary=False)
     param = cooling_model.make_params()
-    results_cooling = cooling_model.fit(y, t=x, params=param)
+    results_cooling = cooling_model.fit(temperatura, t=tempo, params=param)
     return results_cooling
 
 
 def _generate_plot_tile(path: str, prefix: str = PREFIXO_TITULO_GRAFICO, suffix: str = "") -> str:
+    """cria um titulo baseado no nome do arquivo de dados
+
+    :param path: caminho para o arquivo de dados
+    :type path: str
+    :param prefix: texto a ser incluido antes
+    :type prefix: str, optional
+    :param suffix: texto a ser incluido depois
+    :type suffix: str, optional
+    :rtype: str
+    """
     title = prefix
     for w in path.split('/')[-1].split('.')[0].split('_'):
         if len(w) > 3:
@@ -94,7 +134,15 @@ def _generate_plot_tile(path: str, prefix: str = PREFIXO_TITULO_GRAFICO, suffix:
     return title
 
 
-def _linearize_exp(results, temperatura):
+def _linearize_exp(results: lmfit.model.ModelResult, temperatura: np.ndarray) -> np.ndarray:
+    """lineariza dados experimentais assumindo modelo de conducao ou conveccao forcada
+
+    :param results: resultado do ajuste dos dados experimentais ao modelo
+    :type results: lmfit.model.ModelResult
+    :param temperatura: dados experimentais de temperatura
+    :type temperatura: np.ndarray
+    :rtype: np.ndarray
+    """
     param_T0 = results.params['T0'].value
     param_Tinf = results.params['T_inf'].value
     y = np.log((temperatura - param_Tinf) /
@@ -102,28 +150,41 @@ def _linearize_exp(results, temperatura):
     return y
 
 
-def _linearize_cooling(results_cooling):
-    param_A = results_cooling.params['A'].value
-    param_B = results_cooling.params['B'].value
-    param_C = results_cooling.params['C'].value
-    param_m = results_cooling.params['m'].value
+def _linearize_cooling(results) -> Tuple[float, float]:
+    """lineariza dados experimentais assumindo modelo de conveccao natural
+
+    :param results: resultado do ajuste dos dados experimentais ao modelo
+    :type results: lmfit.model.ModelResult
+    :rtype: Tuple[float, float]
+    """
+    param_A = results.params['A'].value
+    param_B = results.params['B'].value
+    param_C = results.params['C'].value
+    param_m = results.params['m'].value
 
     a = param_C/(param_A**(1/param_m))  # coefieciente angular
     b = param_B/(param_A**(1/param_m))  # coefieciente linear
     return a, b
 
 
-def _get_last_values(data):
-    # armazenar ultimas medidas de tempo e de temperatura
+def _get_last_values(data: pd.DataFrame) -> Tuple[float, float]:
+    """obtem os ultimos valores de tempo e de temperatura
+
+    :param data: dados de temperatura por tempo
+    :type data: pd.DataFrame
+    :rtype: Tuple[float, float]
+    """
     last_tempo = data['Tempo (s)'].to_numpy()[-1]
     last_temperatura = data['Temperatura (K)'].to_numpy()[-1]
     return last_temperatura, last_tempo
 
 
-def _prepare_data(data):
-    # desconsiderar medidas repetidas de temperatura
-    data = data.drop_duplicates(subset=['Temperatura (K)'])
+def _prepare_data(data: pd.DataFrame) -> Tuple[pd.DataFrame, ...]:
+    """prepara dados para analise
 
+    :param data: dados de temperatura por tempo
+    :type data: pd.DataFrame
+    """
     # excluir ultima medida, que usaremos para comparar a performance dos modelos
     tempo = data['Tempo (s)'].to_numpy()[:-1]
     temperatura = data['Temperatura (K)'].to_numpy()[:-1]
@@ -138,7 +199,13 @@ def _prepare_data(data):
 
 
 def analize_data(path: str):
+    """analisa arquivo de dados e produz um resumo em formato markdown
+
+    :param path:
+    :type path: str
+    """
     data = pd.read_excel(path)
+    data = data.drop_duplicates(subset=['Temperatura (K)'])
     last_temperatura, last_tempo = _get_last_values(data)
     temperatura, tempo, tempo_intervall = _prepare_data(data)
 
@@ -148,8 +215,7 @@ def analize_data(path: str):
     _, ax1 = plt.subplots(1, 1)
 
     # considerar o intervalo de tempo com temperatura constante como incerteza
-    ax1.errorbar(tempo, temperatura, yerr=0.5, xerr=tempo_intervall, fmt='o',
-                 elinewidth=1, capsize=3, capthick=1, ms=3, c='b', ecolor='black')
+    ax1.errorbar(tempo, temperatura, yerr=0.5, xerr=tempo_intervall, fmt='o', elinewidth=1, capsize=3, capthick=1, ms=3, c='b', ecolor='black')
     ax1.set_ylabel('Temperatura (K)', fontsize=12)
     ax1.set_xlabel('Tempo (s)', fontsize=12)
     ax1.set_title(_generate_plot_tile(path, suffix='- Ajustes Não-Lineares'))
@@ -158,7 +224,7 @@ def analize_data(path: str):
     plt.tight_layout()
 
     # plotar curvas dos dois modelos no mesmo grafico
-    results_exp_cooling = fit_exp_cooling(exp_cooling, tempo, temperatura)
+    results_exp_cooling = _fit_exp_cooling(exp_cooling, tempo, temperatura)
     ax1.plot(tempo, results_exp_cooling.best_fit,
              label='Modelo de Condução ou Convecção Forçada')
     for m in VALORES_DE_M:
@@ -195,8 +261,9 @@ def analize_data(path: str):
         param_T0 = results_cooling.params['T0'].value
         param_m = results_cooling.params['m'].value
         a, b = _linearize_cooling(results_cooling)
-        ax2.errorbar(tempo, (temperatura - param_T0)**((-1)/param_m), yerr=0.002, xerr=tempo_intervall, fmt='o',
-                     elinewidth=1, capsize=3, capthick=1, ms=3, c='b', ecolor='black', label='Dados Experimentais')
+        ax2.errorbar(tempo, (temperatura - param_T0)**((-1)/param_m), yerr=0.002,
+                     xerr=tempo_intervall, fmt='o', elinewidth=1, capsize=3, capthick=1,
+                     ms=3, c='b', ecolor='black', label='Dados Experimentais')
         ax2.plot(tempo, (a*tempo + b),
                  label='Linearização do Modelo de Convecção Natural')
     ax2.legend(loc='best')
@@ -208,6 +275,7 @@ def analize_data(path: str):
 
     # ---------------------------------------------------------------------
     # escrever resultados a um arquivo markdown para melhor legibilidade
+
     diff_squared_exp_cooling = (results_exp_cooling.eval(
         t=last_tempo) - last_temperatura)**2
     diff_squared_cooling = (results_cooling.eval(
