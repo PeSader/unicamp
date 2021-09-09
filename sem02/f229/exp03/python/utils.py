@@ -46,7 +46,7 @@ def incerteza_padrao_triangular(v: float) -> float:
     :return: incerteza padrao associada a variacao dada para uma funcao de
         distribuicao de probabilidade triangular
     """
-    return v/(6**0.5)
+    return v/2*(6**0.5)
 
 def incerteza_padrao_quadrada(v: float) -> float:
     """ Determina a incerteza padrao associada a uma medida cuja funcao de
@@ -60,7 +60,7 @@ def incerteza_padrao_quadrada(v: float) -> float:
         distribuicao de probabilidade quadrada
     :rtype: float
     """
-    return v/(3**0.5)
+    return v/2*(3**0.5)
 
 def incerteza_padrao_combinada(l: List[Tuple[float, float]]) -> float:
     """ Avalia a incerteza padrao combinada para uma grandeza, dadas uma lista
