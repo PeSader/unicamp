@@ -1,0 +1,5 @@
+{
+    "reportGeneralTypeIssues": false,
+    "reportOptionalMemberAccess": false,
+    "reportOptionalOperand": false
+}
