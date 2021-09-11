@@ -64,12 +64,13 @@ Diogo Silva, Guilherme Shimada, Leonardo Vieira, Lucca Miranda, Pedro Azevedo}
 
 \makeatother
 \makeindex
-\setlrmarginsandblock{3cm}{3cm}{*}
-\setulmarginsandblock{3cm}{3cm}{*}
+\setlrmarginsandblock{1.5cm}{1.5cm}{*}
+\setulmarginsandblock{1.5cm}{1.5cm}{*}
 \checkandfixthelayout
 
 \setlength{\parindent}{1.3cm}
 \setlength{\parskip}{0.2cm}
+\setlength{\columnsep}{1.0 cm}
 \SingleSpacing
 
 \begin{document}
@@ -93,46 +94,40 @@ Este artigo apresenta uma discussão teórica a respeito do comportamento de par
 \textual
 \section{Introdução}
 
-O presente artigo propõe uma discussão teórica que tem como base uma situação problema que ocorre no plasma, conhecido como quarto estado físico da matéria. Ele é formado quando uma substância no estado gasoso é aquecida até atingir um valor tão elevado de temperatura que faz com que a agitação térmica molecular supere a energia de ligação que mantém os elétrons em órbita do núcleo atômico. Tal situação acontece nas camadas superiores da atmosfera terrestre, mais especificamente na ionosfera,e envolvendo o comportamento de partículas no interior dos metais.
+Nesse artigo, discutiremos aspectos teóricos da dinâmica e da cinemática do plasma atmosférico. Esse estado da matéria é formado quando um gás é aquecido até que a energia de agitação molecular supere a energia de órbita dos elétrons. Esse processo é favorecido por pressões baixas, visto que assim ocorre menos perda de energia cinética dos elétrons devido a colisões. Por esse motivo, esse processo ocorre predominantemente nas camadas superiores da atmosfera terrestre (onde a pressão é mais baixa), mais especificamente região denominada ionosfera.
 
-Considerando um sistema neutro formado por elétrons livres e íons positivos (cátions), estando esses últimos fixos em sua posição; seguindo as leis de Newton; uma densidade volumétrica n0 igual para as duas cargas, queremos discutir física e matematicamente as consequências de um deslocamento do equilíbrio de cargas ao longo do eixo x. Além disso, precisamos discutir os efeitos que possam causar resistência ao movimento dos elétrons livres.
+Considerando um sistema neutro formado por elétrons livres e íons positivos fixos, ambos com densidade volumétrica $n_0$, usaremos as leis de Newton para discutir física e matematicamente as consequências de um deslocamento do equilíbrio de cargas ao longo do eixo x. Além disso, precisamos discutir os efeitos que possam causar resistência ao movimento dos elétrons livres.
 
 Inicialmente, a pesquisa está focada em encontrar uma equação que descreva a movimentação dos elétrons em torno dos íons positivos, mais especificamente a força restauradora que ´´atrai'' os elétrons para seu estado de equilíbrio. Ademais,os estudo também estão voltados para o encontro de um modelo simples que possa demonstrar efeitos resistivos dessa situação.
 
 \section{Metodologia}
 
 \subsection{Densidade final de carga}
-Sabemos pelo enunciado que a densidade volumétrica de elétrons inicialmente é $n_0$. Tomando $N$ pelo número de elétrons naquela região, podemos expressar tal densidade da seguinte maneira:
+Sabemos pelo enunciado que a densidade volumétrica inicial de elétrons é $n_0$. Assumindo que a distribuição de elétrons é homogênea na direção horizontal, tomamos $N$ pelo número de elétrons naquela região e $A$ pela área perpendicular a $\Delta x$. Assim podemos expressar tal densidade como
 
 \begin{equation} \label{densidade-eletronica-inicial}
-  n_0 = \frac{N}{\Delta x}
+  n_0 = \frac{N}{A\Delta x}.
 \end{equation}
 
-Assim, quando ocorre o deslocamente de densidade para fora do equilíbrio, temos a seguinte equação para a densidade eletrônica final:
+\noindent Quando ocorre o deslocamento de densidade para fora do equilíbrio na mesma direção de $\Delta x$, o $A$ não muda. Então a densidade eletrônica final é
 
 \begin{equation} \label{densidade-eletronica-final}
-  n_f = \frac{N}{\Delta x + \Delta s}
+  n_f = \frac{N}{A(\Delta x + \Delta s)},
 \end{equation}
 
-Isolando a variável $N$ na equação~\ref{densidade-eletronica-inicial} e substituindo-a na equação~\ref{densidade-eletronica-final}, obtemos uma expressão de densidade eletrônica final que independe do número de elétrons:
+\noindent onde $N/A$ é uma constante que pode ser isolada na equação~\ref{densidade-eletronica-inicial} e substituída na equação~\ref{densidade-eletronica-final}, obtendo
 
-\begin{equation}
-  n_f = \frac{n_0\Delta x}{\Delta x + \Delta s}
+\begin{equation}\label{incoveniente}
+  n_f = \frac{n_0\Delta x}{\Delta x + \Delta s} = \frac{n_0}{1 + \frac{\Delta s}{\Delta x}}.
 \end{equation}
 
-Note que podemos dividir o numerador e o denominador dessa fração por $\Delta x$, assim obtendo:
-
-\begin{equation}
-  n_f = \frac{n_0}{1 + \frac{\Delta s}{\Delta x}}
-\end{equation}
-
-Como $\frac{\Delta s}{\Delta x} \ll 1$, podemos usar a expansão de Taylor para aproximar a equação acima para outra mais conveniente:
+\noindent Como veremos na seção \ref{forca}, uma força elétrica restauradora garante que as oscilações $\Delta s$ são pequenas em comparação a $\Delta x$. Isso significa que $\Delta s/\Delta x \ll 1$, então podemos usar a expansão de Taylor para aproximar a equação \ref{incoveniente} para a mais conveniente
 
 \begin{equation} \label{densidade-eletronica-taylor}
-  n_f = \frac{n_0}{1 + \frac{\Delta s}{\Delta x}} \approx n_0(1 - \frac{\Delta s}{\Delta x})
+  n_f \approx n_0(1 - \frac{\Delta s}{\Delta x}).
 \end{equation}
 
-A partir dessa equação de densidade de elétrons (de dimensão $\frac{\textrm{elétrons}}{m^3}$), podemos obter mudança de densidade de carga $\Delta\rho$ (de dimensão $\frac{\textrm{C}}{m^3}$) multiplicando a primeira por um fator dimensional $\frac{- q_e C}{\textrm{elétrons}}$, onde $q_e$ é a constante de carga elementar.
+\noindent A partir dessa equação, de dimensão [$\textrm{``elétrons''}~m^{-3}$], obtemos mudança de densidade de carga $\Delta\rho$, de dimensão [$\textrm{C}~m^{-3}$], multiplicando a primeira por um fator dimensional [$-q_e C~{\textrm{``elétrons''}^{-1}}$], onde $q_e$ é a constante de carga elementar:
 
 \begin{equation}
   \Delta\rho = \Delta n [\frac{\cancel{\textrm{elétrons}}}{m^3}][\frac{- q_e C}{\cancel{\textrm{elétrons}}}]
@@ -147,25 +142,25 @@ A partir dessa equação de densidade de elétrons (de dimensão $\frac{\textrm{
 \end{equation}
 
 \begin{equation} \label{rho-diferencial}
-  \Rightarrow \rho = \frac{dQ}{dV} = \frac{n_0 q_e ds}{dx}
+  \Rightarrow \rho = \frac{dQ}{dV} = \frac{n_0 q_e ds}{dx}.
 \end{equation}
 
-\subsection{Força restauradora}
+\subsection{Força restauradora}\label{forca}
 
-A forma diferencial da equação~\ref{rho-diferencial} nos permite avaliar o fluxo de campo elétrico usando a Lei de Gauss.
+A forma diferencial da equação~\ref{rho-diferencial} nos permite avaliar o fluxo de campo elétrico usando a Lei de Gauss, assim
 
 \begin{equation}
-  \int \vec{E} \cdot d\vec{A} = \int \nabla \vec{E}~dV = \int \frac{\rho}{\varepsilon _0}~dV
+  \int \vec{E} \cdot d\vec{A} = \int \nabla \cdot \vec{E}~dV = \int \frac{\rho}{\varepsilon _0}~dV
 \end{equation}
 
 \begin{equation}
-  \Rightarrow  \norm{\nabla \vec{E}} = \frac{\rho}{\varepsilon _0}
+  \Rightarrow  \norm{\nabla \cdot \vec{E}} = \frac{\rho}{\varepsilon _0}.
 \end{equation}
 
-Pela simetria do problema, sabemos que o campo elétrico resultante será nulo em todas as direções exceto a das abscissas, portanto:
+\noindent Pela simetria do problema, sabemos que o campo elétrico resultante será nulo em todas as direções exceto a do eixo x, portanto:
 
 \begin{equation}
-  \nabla \vec{E} = (\frac{\rho}{\varepsilon _0}, 0, 0)
+  \nabla \vec{E} = \left(\frac{\rho}{\varepsilon _0}, 0, 0\right)
 \end{equation}
 
 \begin{equation}
@@ -173,7 +168,7 @@ Pela simetria do problema, sabemos que o campo elétrico resultante será nulo e
 \end{equation}
 
 \begin{equation}
-  \Rightarrow \frac{d\vec{E}}{\cancel{dx}} = \frac{n_0 q_e ds}{\varepsilon _0~\cancel{dx}}
+  \Rightarrow \int \frac{d\vec{E}}{dx} dx = \int \frac{n_0 q_e ds}{\varepsilon _0~dx} dx
 \end{equation}
 
 \begin{equation}
@@ -181,84 +176,80 @@ Pela simetria do problema, sabemos que o campo elétrico resultante será nulo e
 \end{equation}
 
 \begin{equation} \label{campo-eletrico}
-  \Rightarrow \vec{E} = \frac{n_0 q_e s}{\varepsilon _0~} + K
+  \Rightarrow \vec{E} = \frac{n_0 q_e s}{\varepsilon _0~} + K.
 \end{equation}
 
-Como o campo elétrico é nulo quando o sistema está em $s$, $K=0$. Feito isso, é trivial calcular a força elétrica usando a 1\textsuperscript{\underline{a}} Lei de Coulomb:
+\noindent O campo elétrico é nulo quando $s=0$, então $K=0$. Sabendo disso, usamos a 1\textsuperscript{\underline{a}} Lei de Coulomb para avaliar a força elétrica como
 
 \begin{equation} \label{forca-restauradora}
-  \vec{F_{el}} = q_e\vec{E} = q_e \frac{n_0 q_e s}{\varepsilon _0~} = \frac{n_0 q_e^2 s}{\varepsilon _0~}
+  F_{el} = q_eE = q_e \frac{n_0 q_e s}{\varepsilon _0~} = \frac{n_0 q_e^2 s}{\varepsilon _0~},
 \end{equation}
 
-Essa é a força elétrica restauradora que faz o sistema tender novamente ao equilíbrio inicial.
+\noindent sendo essa a força restauradora que faz o sistema retornar ao estado de equilíbrio inicial.
 
 \subsection{Oscilação Livre}
 
-Como a força elétrica é a única força atuando sobre o sistema, ela é a resutante. Por isso, podemos usar a segunda Lei de Newton para modelar o movimento dos elétrons sob o efeito dessa força.
+Como a força elétrica é a única força atuando sobre o sistema, ela é a resultante. O enunciado nos permitiu assumir que a dinâmica dos elétrons pode ser modelada pela mecânica newtoniana (o que não é exatamente verdade, considerando que alguns comportamentos bizarros dos elétrons só podem ser propriamente modelados pela mecânica quântica), então pela segunda Lei de Newton temos
 
 \begin{equation} \label{equacao-diferencial}
-  \norm{\vec{F_{el}}} = \norm{\vec{R}}= m_e \frac{d^2s}{dt^2} = \frac{n_0 q_e^2 s}{\varepsilon _0~}
+  F_{el} =  m_e \frac{d^2s}{dt^2} = \frac{n_0 q_e^2 s}{\varepsilon _0~}.
 \end{equation}
 
-Observe, na equação diferencial acima, que segunda derivada de s equivale a s multiplicada por uma constante. Isso significa que a solução para essa equação é da forma~$\cos(\omega x)$, onde~$\omega$ é a frequência angular da oscilação harmônica estabelecida pelos elétrons. Percebendo isso, é simples resolver a equação~\ref{equacao-diferencial} e isolar a variável de frequência angular.
+\noindent Observe que segunda derivada de $s$ equivale a s multiplicada por uma constante. Isso significa que a solução para essa equação é da forma~$\cos(\omega x)$, onde~$\omega$ é a frequência angular da oscilação harmônica estabelecida pelos elétrons. Percebendo isso, conseguimos resolver a equação~\ref{equacao-diferencial} e isolar a frequência angular como
 
 \begin{equation}
-  \omega = \frac{n_0 q_e^2}{\varepsilon_0 m_e}
+  \omega = \frac{n_0 q_e^2}{\varepsilon_0 m_e}.
 \end{equation}
 
-Essa é a solução pro caso mais simples, isto é, sem amortecimento. Para o caso amortecido, veremos a solução adiante.
+\noindent Essa é a solução pro caso mais simples, isto é, sem amortecimento. Para o caso amortecido, veremos a solução adiante.
 
 \subsection{Oscilação Amortecida}
 
-Para o caso da oscilação amortecida, vamos modelar a força de amortecimento $F_{am}$ como proporcional a velocidade e com sinal negativo para indicar que ela tem sentido contrário ao movimento.
+Para o caso da oscilação amortecida, vamos modelar a força de amortecimento $F_{am}$ como proporcional a velocidade e com sinal negativo para indicar que ela tem sentido contrário ao movimento:
 
 \begin{equation} \label{forca-amortecimento}
-  F_{am} = -b\frac{dx}{dt}
+  F_{am} = -b\frac{dx}{dt},
 \end{equation}
 
-Assim, podemos expressar a resultante como a diferença entre a força de amortecimento e força elétrica.
+\noindent então a resultante, que é a soma vetorial da força de amortecimento e da força elétrica, equivale a
 
-\begin{equation}
-  \norm{\vec{R}} = -b\frac{dx}{dt} - \frac{n_0 q_e^2 s}{\varepsilon _0~}
+\begin{equation} \label{resultante-amortecida}
+  R = -b\frac{dx}{dt} - \frac{n_0 q_e^2 s}{\varepsilon _0~}.
 \end{equation}
 
-Pela segunda Lei de Newton, temos:
+\noindent Aplicando a segunda Lei de Newton a \ref{resultante-amortecida} obtemos
 
 \begin{equation}
   -b\frac{dx}{dt} - \frac{n_0 q_e^2 s}{\varepsilon _0~} = m_e\frac{d^2x}{dt^2}
 \end{equation}
 
 \begin{equation}
-  b\frac{dx}{dt} + \frac{n_0 q_e^2 s}{\varepsilon _0~} + m_e\frac{d^2x}{dt^2} = 0
+  \Rightarrow b\frac{dx}{dt} + \frac{n_0 q_e^2 s}{\varepsilon _0~} + m_e\frac{d^2x}{dt^2} = 0,
 \end{equation}
 
-Essa equação pode ser reescrita em termos de frequência angular e usando $\gamma = \frac{b}{m_e}$ como coeficiente de amortecimento.
+\noindent a qual pode ser reescrita em termos de frequência angular e usando $\gamma = b/m_e$ como coeficiente de amortecimento:
 
 \begin{equation} \label{equacao-diferencial-omega}
-  \frac{d^2x}{dt^2}  + \gamma\frac{dx}{dt} + \omega^2 s= 0
+  \frac{d^2x}{dt^2}  + \gamma\frac{dx}{dt} + \omega^2 s= 0,
 \end{equation}
-
-Da solução da equação diferencial acima, obtemos
 
 \begin{equation}
-  \omega=\sqrt{\frac{n_0 q_e^2}{\varepsilon_0 m_e}}
+  \Rightarrow \omega=\sqrt{\frac{n_0 q_e^2}{\varepsilon_0 m_e}}.
 \end{equation}
 
-Por fim, expressamos a posição dos elétrons em função do tempo utilizando a equação de frequência angular acima:
+\noindent Por fim, utilizamos a expressão de frequência angular para obter como equação horária de posição dos elétrons
 
 \begin{equation}
-  x(t) = A q_e^{\frac{-\gamma t}{2}} cos(\omega t + \phi)
+  x(t) = A q_e^{\frac{-\gamma t}{2}} cos(\omega t + \phi).
 \end{equation}
 
-Isso encerra o desenvolvimento de nossos métodos matemáticos de investigação.
+\noindent Isso encerra o desenvolvimento de nossos métodos matemáticos de investigação.
 
 \section{Resultados e Discussão}
 
  Em primeira análise, o sistema proposto era de uma região com densidade de elétrons e íons iguais a $n_0$, haja vista que o sistema estava em equilíbrio eletrostático. No entanto, devido a uma perturbação no sistema, os elétrons são deslocados uma distância $s$ ao longo do eixo $x$, assim aumentando o volume disponível e diminuindo a densidade do novo sistema, como pode ser visto na  equação \ref{densidade-eletronica-taylor}.
 
-Ademais, em razão desse deslocamento, existem dois efeitos que os elétrons vão sentir: o primeiro está relacionado a uma força atrativa que ocorre naturalmente entre uma carga positiva e uma carga negativa, sendo esta calculada pela fórmula da Lei de Coulomb.
-
-O outro efeito que os elétrons sofrem está relacionado ao campo elétrico $\vec{E}$ gerado pelos íons (vide figura \ref{forcas}), devido a distância que entre as partículas após o deslocamente. Tal efeito foi calculado através da equação diferencial \ref{campo-eletrico}.
+Ademais, em razão desse deslocamento, existe um efeito sentido pelos elétrons: este efeito está relacionado a uma força atrativa que ocorre naturalmente entre uma carga positiva e uma carga negativa, sendo esta calculada pela fórmula da Lei de Coulomb. É válido ressaltar que esse efeito  que os elétrons sofrem está relacionado com o campo elétrico $\vec{E}$ gerado pelos íons (vide figura \ref{forcas}), haja vista que, após o deslocamento, surge uma distância entre as partículas que propicia esse fenômeno. Tal efeito foi calculado através de uma equação diferencial \ref{campo-eletrico}.
 
 \begin{figure}[htb]
     \caption{\label{forcas}Força e campo elétrico no elétron}
@@ -267,15 +258,13 @@ O outro efeito que os elétrons sofrem está relacionado ao campo elétrico $\ve
     \fonte{Autoral}
 \end{figure}
 
-Analisando mais especificamente esse movimento, quando o elétron é deslocado e, em seguida, forçado a retornar a sua posição de origem, ele ganha uma certa energia cinética e, em virtude disso, acaba ultrapassando a posição de origem. Essa dinâmica é realizada consecutivas vezes, fazendo com que esse movimento se assemelhe a um movimento harmônico, ou seja, é aquele em que um corpo oscila em torno de uma posição de equilíbrio em razão de uma força restauradora (equação \ref{forca-restauradora}). Em primeiro momento, é de se admitir que o sistema é conservativo, logo o elétron terá comportamento análogo a um pêndulo simples, uma mola, ou uma onda sonora. Esta última, por sua vez, tem sua força restauradora originada pela pressão do gás, enquanto o objeto desse estudo (elétrons no plasma) tem por força restauradora as forças eletrônicas.
+Analisando mais especificamente esse movimento, quando o elétron é deslocado e, em seguida, forçado a retornar a sua posição de origem, ele ganha uma certa energia cinética e, em virtude disso, acaba ultrapassando a posição de origem. Essa dinâmica é realizada consecutivas vezes, fazendo com que esse movimento se assemelhe a um movimento harmônico, ou seja, é aquele em que um corpo oscila em torno de uma posição de equilíbrio em razão de uma força restauradora (equação \ref{forca-restauradora}). Em primeiro momento, é de se admitir que o sistema é conservativo, logo o elétron terá comportamento análogo a um pêndulo simples ou uma mola. Esta última, por sua vez, tem sua força restauradora originada pela pressão do gás, enquanto o objeto desse estudo (elétrons no plasma) tem por força restauradora as forças eletrônicas.
 
- Após o equacionamento da força restauradora e de seu desenvolvimento é possível encontrar a frequência natural do plasma e sua equação horária. Dentre desses resultados, pode-se inferir que a oscilação de elétrons ocorre tanto na ionosfera quanto nos metais em alta temperatura.
+Após o equacionamento da força restauradora e de seu desenvolvimento é possível encontrar a frequência natural do plasma e sua equação horária. Dentre desses resultados, pode-se inferir que a oscilação de elétrons ocorre tanto na ionosfera quanto em metais a alta temperatura (a ser determinada pela equação de Saha-Langmuir \cite{dresser_1968}). No caso dos metais, o fenômeno de "mar de elétrons" permite certa mobilidade a essas partículas carregadas, facilitando o processo de ionização térmica para esse tipo de material.
 
- Dentro desse contexto, a ionosfera sofre esse fenômeno devido aos raios ultravioleta do Sol, os quais arrancam elétrons livres das molécula de ar e produzem elétrons livres e íons positivos. Um dos efeitos que tal situação proporciona à ionosfera é que apenas ondas com frequências maiores que a do plasma conseguem atravessar a camada atmosférica, como por exemplos as ondas via satélite que são lançadas ao espaço. Outro ponto a se ressaltar é que as comunicações via rádio também são influenciadas por essa frequência natural do plasma contido na ionosfera, haja vista que, como as frequências de rádio são mais baixas, é possível que elas sejam refletidas pela ionosfera e, consequentemente, ampliem seu campo de atuação.
+Dentro desse contexto, a ionosfera sofre esse fenômeno devido aos raios ultravioleta do Sol, os quais arrancam elétrons livres das molécula de ar e produzem elétrons livres e íons positivos. Um dos efeitos que tal situação proporciona à ionosfera é que apenas ondas com frequências maiores que a do plasma conseguem atravessar a camada atmosférica, por exemplo as ondas via satélite que são lançadas ao espaço. Outro ponto a se ressaltar é que as comunicações via rádio também são influenciadas por essa frequência natural do plasma contido na ionosfera, pois é possível que as ondas de rádio (cuja frequência é mais baixa) sejam refletidas pela ionosfera e assim ampliem seu alcance.
 
- Dando mais detalhamento a esse efeito reflexivo, é importante destacar que a propagação de ondas eletromagnéticas (como a luz) no plasma ionosférico, tem comportamento semelhante à ondas sônicas dentro de fluídos dentro de fluidos de diferentes densidades.
-
-Nessa perspectiva, o índice de refração vai diminuindo com a altura, com camadas paralelas de densidade semelhantes, de acordo coma Lei de Snell, um incidente procedente da Terra, se curvará até atingir uma trajetória horizontal
+Nessa perspectiva, o índice de refração vai diminuindo com a altura, com camadas paralelas de densidade semelhantes, de acordo coma Lei de Snell, um incidente procedente da Terra, se curvará até atingir uma trajetória horizontal.
 
 \begin{figure}[htb]
     \caption{\label{refracao}Refrações sucessivas}
@@ -289,11 +278,11 @@ Nessa perspectiva, o índice de refração vai diminuindo com a altura, com cama
 
  Em relação aos metais, existe uma densidade $n_o$ muito grande de partículas e, consequentemente, uma frequência natural muito elevada também. Ainda assim, há uma possibilidade de ``ver'' as oscilações dos elétrons. Conforme a mecânica quântica, uma frequência harmônica natural $\omega_p$, possui níveis de energia divididos por incrementos de energia $\hbar\omega_p$. Logo, se atirarmos alguns elétrons através de uma folha de alumínio, quando olharmos para os mesmos após a penetração e calcularmos os níveis de energia, será possível perceber que os elétrons terão perdido uma energia $\hbar\omega_p$ para as oscilações dos plasmas dos metais.
 
-Além dos resultados obtidos, é possível ainda descrever um sistema no qual as oscilações harmônicas não são conservativos. Isso ocorre quando existe uma perda de energia gerada por atrito e por colisões entre os elétrons, que levam a dissipação de energia cinética em forma de calor. Nesse caso, podemos modelar a força resistiva como diretamente proporcional a velocidade, como visto na equação \ref{forca-amortecimento}. Utilizando esse modelo, fomos capazes de calcular a frequência natural desse sistema amortecido.
+Além dos resultados obtidos, é possível ainda descrever um sistema no qual as oscilações harmônicas não são conservativas. Isso ocorre quando existe uma perda de energia gerada por atrito e por colisões entre os elétrons, que levam a dissipação de energia cinética em forma de calor. Nesse caso, podemos modelar a força resistiva como diretamente proporcional a velocidade, como visto na equação \ref{forca-amortecimento}. Utilizando esse modelo, fomos capazes de calcular a frequência natural desse sistema amortecido.
 
 \section{Conclusão}
 
-Após essa detalhada análise, concluímos que nosso método de modelagem matemática permitiu significativo avanço na representação analítica da situação física estudada. Essa representação, por sua vez, possibilitou melhor compreensão do comportamento do sistema físico, tanto do ponto de vista da dinâmica quanto da cinemática.
+Após nossa análise, concluímos que método de modelagem matemática escolhido permitiu significativo avanço na representação analítica da situação física estudada. Essa representação, por sua vez, possibilitou melhor compreensão do comportamento do sistema físico, tanto do ponto de vista da dinâmica quanto da cinemática.
 
 \nocite{feynman_leighton_sands_2009, halliday_resnick_walker_2008, mazur_et_al_2016}
 
