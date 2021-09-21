@@ -12,6 +12,9 @@
 # Python
 *.pyc
 
+# Jupyter
+*.ipynb_checkpoints
+
 # Codium
 **/.vscode/
 
