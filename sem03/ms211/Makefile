@@ -4,7 +4,7 @@ PDFS = $(wildcard lista*_resolucao.pdf)
 
 NBFLAGS = --TagRemovePreprocessor.remove_cell_tags="remove_cell" \
 	--TemplateExporter.extra_template_basedirs="." \
-	--template template --execute --to pdf
+	--template template --no-prompt --to pdf
 
 all : $(PDFS)
 
