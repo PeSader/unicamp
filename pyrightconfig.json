@@ -1,5 +1,6 @@
 {
     "reportGeneralTypeIssues": false,
     "reportOptionalMemberAccess": false,
-    "reportOptionalOperand": false
+    "reportOptionalOperand": false,
+    "reportOptionalSubscript": false
 }
