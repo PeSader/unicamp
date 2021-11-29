@@ -22,6 +22,7 @@
 \usepackage{amsmath, amssymb}
 \usepackage{mathtools}
 \usepackage{esint}
+\usepackage{soul}
 \graphicspath{{img/}}
 
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
@@ -85,7 +86,7 @@ Diogo Silva, Guilherme Shimada, Leonardo Vieira, Lucca Miranda, Pedro Azevedo}
 
 \begin{resumoumacoluna}
 
-Este artigo apresenta uma discussão teórica a respeito do comportamento de um anel de material isolante carregado e imerso em um campo magnético variável. Para esse propósito, apresentaremos equações que descrevem esse corpo no ambiente em questão, a fim de compreender de uma melhor maneira a física do experimento analisado.
+Este artigo apresenta uma discussão teórica sobre o comportamento de um anel de material isolante carregado e imerso em um campo magnético variável. Para esse propósito, foram utilizadas equações para descrever o corpo nesse ambiente, a fim de melhor compreender a mecânica dessa situação.
 
 % \vspace{\onelineskip}
 
@@ -99,24 +100,39 @@ Este artigo apresenta uma discussão teórica a respeito do comportamento de um 
 \textual
 \section{Introdução}
 
-Na configuração inicial da situação que nos propomos estudar, existe um anel de raio $r$ fabricado com material isolante que está carregado com uma densidade linear de carga uniforme e total $q$. O mesmo encontra-se em repouso, podendo girar em torno do seu eixo de simetria $Z$. Na mesma direção desse eixo, encontra-se um campo magnético constante $B_{\text{ext}}$ gerado por um solenóide infinito com raio $b \gg r$. Eventualmente interrompe-se a corrente que passa pelo solenóide, induzindo um campo elétrico no eixo de simetria, tangencial ao anel.
+A situação analisada neste trabalho muito se assemelha ao famoso Paradoxo Feynman, pois ela demonstra que alterações na corrente que atravessa um condutor podem causar mudanças (a princípio) contra-intuitivas no momento angular de outros corpos do mesmo sistema.
 
-A partir de uma modelagem matemática dessa situação com as equações adquiridas no decorrer da disciplina de Física Teórica III, avaliamos se o anel irá girar em torno do seu eixo após a interrupção do fluxo de corrente.
+Mais especificamente, este estudo pretende analisar o efeito da interrupção da corrente que atravessa um solenoide infinito de raio $b$ sobre um anel concêntrico de raio $r \ll b$, carregado com carga $q$ e feito de material isolante. Na situação inicial, o anel está em repouso mas é livre para girar em torno de seu próprio eixo central, o qual se alinha ao eixo $z$ (vide figura \ref{campo-tangencial-img}).
+
+A partir de uma modelagem matemática dessa situação com as equações adquiridas no decorrer da disciplina de Física Teórica III, avaliamos a resposta mecânica do anel à interrupção da corrente.
 
 \section{Metodologia}
 
 \subsection{O anel gira ou não gira?}
-Quando a corrente é interrompida, o fluxo magnético sobre o anel vai de $\Phi_{Bi} = B_{\text{ext}} \pi r^2$ para $\Phi_{Bf} = 0$. Isso significa que o fluxo magnético se altera mediante o tempo, provocando o surgimento de uma tensão induzida ao redor do anel, de acordo com a Lei de Faraday:
+\textcolor{blue}{O momento angular inicial do sistema ($L_i$) é a soma dos momentos angulares do solenoide e do anel. O anel é feito de material isolante, então os elétrons em seu interior não se movem em relação a ele. Isso significa que, se anel está parado, assim também estão as cargas em seu interior. Portanto, o momento angular inicial provém inteiramente do movimento das cargas no interior do solenoide (lembrando que o solenoide tem a aparência de uma espiral, cujo eixo central coincide com o do anel).}
+
+\textcolor{blue}{Quando a corrente que passa pelo solenoide é interrompida, as cargas em seu interior deixam de se mover. No entanto, o momento angular do sistema deve se conservar então as cargas no interior do anel começam a se mover. Como o anel é feito de material isolante, as cargas não se movem em relação a ele, então o anel inteiro gira.}
+
+\textcolor{blue}{A explicação física para essa transferência de momento angular do solenoide para o anel é dada pela Lei de Lenz, que afirma que uma mudança no fluxo magnético induz o surgimento de pontecial elétrico que compensa a alteração no fluxo (esse é o significado do sinal de menos antecedendo $\Delta V$ na fórmula abaixo)}:
+
+\begin{equation}
+	\frac{d\Phi_B}{dt} = -\Delta V
+\end{equation}
+
+\textcolor{blue}{Como o campo magnético diminuiu sua componente no sentido $\hat{z}$, o campo magnético que}
 
 \begin{equation}
 	\frac{d\Phi_B}{dt} = -\Delta V = \oint_{\text{anel}} \vec{E} \cdot d\vec{l}.
 \end{equation}
 
 
+Quando a corrente é interrompida, o fluxo magnético sobre o anel vai de $\Phi_{Bi} = B_{\text{ext}} \pi r^2$ para $\Phi_{Bf} = 0$. Isso significa que o fluxo magnético se altera mediante o tempo, provocando o surgimento de uma tensão induzida ao redor do anel, de acordo com a Lei de Faraday:
+
+
 Onde há tensão elétrica, certamente há também campo elétrico. Como o campo $B_{\text{ext}}$ era constante na direção axial, o campo elétrico que surge tem formato circular (pense na ``Regra da Mão da Direita''!), conforme a figura abaixo.
 
-\begin{figure}[htb]\label{campo-tangencial-img}
-    \caption{Campo elétrico tangente ao anel}
+\begin{figure}[htb]
+    \caption{Campo elétrico tangente ao anel}\label{campo-tangencial-img}
     \centering
     \includegraphics[width=0.4\textwidth]{corrente_tangencial.png}
 	\fonte{LECLAIR, 2008}
@@ -181,8 +197,6 @@ Como o campo elétrico é tangencial, $d\vec{l} \parallel \vec{E}$ em todo o ane
     \vec{\tau} = \left(\lambda r \Delta V \right) \hat{z}
 \end{equation}
 
-\noindent\textcolor{blue}{Dúvida: o resultado dessa integral não deveria ser $-\Delta V$? A Lei de Faraday (como expressa na equação \ref{lei-de-faraday-eq}) nos leva a esse resultado, mas a fonte que usamos para compor nossa resolução \cite{leclair_2008} indicou $\Delta V$ como resultado da integral. Isso está relacionado a direção do campo elétrico?}
-
 \begin{equation}
     \Rightarrow \vec{\tau} = \left(\frac{q}{2\pi \cancel{r}}~\cancel{r} \Delta V \right) \hat{z} = \left(\frac{q \Delta V}{2\pi}\right) \hat{z}
 \end{equation}
@@ -215,87 +229,135 @@ Pela Segunda Lei de Newton, o torque resultante equivale a derivada temporal do 
 \noindent onde os limites de integração $i$ e $f$ representam os instantes imediatamente anterior e posterior ao desligamento da corrente do solenoide, respectivamente. Resolvendo as integrais da equação \ref{integral-momento-angular-eq}, obtemos
 
 \begin{equation}
-    L_f - L_i = \frac{q}{2\pi}(\Phi_{Bi} - \Phi_{Bf}),
+    L_f - L_i = \frac{q}{2\pi}(\Phi_{Bi} - \Phi_{Bf}).
 \end{equation}
 
-\noindent onde $L_i = 0$ pois o momento angular inicial é nulo, e $\Phi_{Bf} = 0$ pois o campo magnético é nulo logo após o desligamento da corrente no solenoide. Assim o momento angular final do anel é
+Nessa equação, $L_i = 0$ pois o anel está estacionário na situação inicial e, portanto, seu momento angular inicial é nulo. Como o anel está girando na situação final, ele gera o próprio campo magnético que, segundo a dica dada no enunciado, pode ser modelado como $B_{\text{anel}} = A\lambda\omega$. Isso significa que o momento angular final do anel é
 
 \begin{equation}
-    L_f = \frac{q}{2\pi}\Phi_{Bi}
-\end{equation}
-
-\begin{equation}
-    \Rightarrow L_f = \frac{q}{2\cancel{\pi}}(B_{\text{ext}}\cancel{\pi} r^2)
+    L_f - \cancelto{0}{L_i}= \frac{q}{2\pi}(B_{\text{ext}}\pi r^2 - B_{\text{anel}} \pi r^2)
 \end{equation}
 
 \begin{equation}
-    \Rightarrow L_f = \frac{q}{2}(B_{\text{ext}}~r^2).
+    \Rightarrow L_f = \frac{q r^2 \cancel{\pi}}{2\cancel{\pi}} (B_{\text{ext}} - B_{\text{anel}})
+\end{equation}
+
+\begin{equation}
+    \Rightarrow L_f = \frac{q r^2}{2} (B_{\text{ext}} - A\lambda\omega)
 \end{equation}
 
 Sabendo que o momento de inércia $I$ de um anel de raio $r$ e massa $m$ é dado por $I = mr^2$, podemos calcular a velocidade angular $\omega$ como
 
 \begin{equation}
-    \omega = Lf/I = \frac{q}{2}\left(\frac{B_{\text{ext}}~\cancel{r^2}}{m\cancel{r^2}}\right)
+    \omega = \frac{Lf}{I} = \frac{q \cancel{r^2}}{2m \cancel{r^2}}(B_{\text{ext}} - A\lambda\omega)
 \end{equation}
 
 \begin{equation}
-    \Rightarrow \omega = \frac{qB_{\text{ext}}}{2m}
+    \Rightarrow \omega = \frac{qB_{\text{ext}}}{2m} + \frac{A\lambda\omega}{2m}
+\end{equation}
+
+\begin{equation}
+    \Rightarrow \omega - \frac{A\lambda\omega}{2m} = \frac{qB_{\text{ext}}}{2m}
+\end{equation}
+
+\begin{equation}
+    \Rightarrow \omega \left(1 - \frac{A\lambda}{2m} \right)= \frac{qB_{\text{ext}}}{2m}
+\end{equation}
+
+\begin{equation}
+    \Rightarrow \omega \left(\frac{2m - A\lambda}{2m} \right)= \frac{qB_{\text{ext}}}{2m}
+\end{equation}
+
+\begin{equation}
+    \Rightarrow \omega = \frac{qB_{\text{ext}}}{\cancel{2m}}\left(\frac{\cancel{2m}}{2m - A\lambda} \right)
+\end{equation}
+
+\begin{equation}
+    \Rightarrow \boxed{\omega = \frac{qB_{\text{ext}}}{2m - A\lambda}}
 \end{equation}
 
 \subsection{Campo magnético inicial}
 
-O momento angular de um único elétron no solenoide é
-
-\begin{equation}
-    L_{\text{elétron}} = m_e v_e b,
-\end{equation}
-
-\noindent onde $m_e$ e $v_e$ são, respectivamente, a massa e a velocidade de um elétron. Assim, o momento angular dos elétrons em uma espira do solenoide é
-
-\begin{equation}
-    L_{\text{espira}} = (n_e 2\pi b)(m_e V_e b) = n_e  2\pi b^2 m_e v_e,
-\end{equation}
-
-sendo $n_e$ o número de elétrons em uma espira. Por fim, o momento angular do total de elétrons no solenoide é
-
-\begin{equation}
-    L_{\text{total}} = (N u_a)(2\pi b^2 m_e v_e)
-\end{equation}
-
-\begin{equation}
-    \frac{L_T}{u_a} = N (2\pi b^2 m_e V_e),
-\end{equation}
-
-\noindent em que $u_a$ representa uma unidade de medida arbitrária de comprimento e $N$ representa o número de espiras no solenoide. Disso, temos as seguintes equações:
-
-\begin{equation}
-    \begin{cases}
-	B_{\text{ext}} = \mu_0 n i\\
-	i = n_e m_e V_e\\
-	B_{\text{ext}} = \mu_0 n_e v_e q_e n
-    \end{cases}
-\end{equation}
-
-\begin{equation}
-    \Rightarrow \frac{L_T}{u_a} = \frac{2\pi b^2}{\mu_0 q_e} B_{\text{ext}},
-\end{equation}
-
-\noindent ou seja, podemos definir uma constante $C$ tal que
-
-\begin{equation}
-    \frac{L_T}{u_a} = C B_{\text{ext}}.
-\end{equation}
+\textcolor{blue}{Sabemos pela Lei de Ampére (precisa deduzir?) que a fórmula do campo magnético produzido por um solenoide é dado por:}
 
 
-\begin{equation}
-    \therefore B_{\text{ext}} = \frac{L_T}{u_a C}.
-\end{equation}
+\textcolor{blue}{\begin{equation}
+    B_{\text{ext}} = \mu_0 i \left(\frac{N}{L}\right),
+\end{equation}}
+
+\noindent\textcolor{blue}{que pela definição de corrente, equivale a}
+
+\textcolor{blue}{\begin{equation}
+    B_{\text{ext}} = \mu_0 \left(\frac{Q}{\Delta t}\right) \left(\frac{N}{L}\right),
+\end{equation}}
+
+\noindent\textcolor{blue}{onde $\Delta t$ é o tempo necessário para um elétron percorrer o solenoide inteiro, de ponta a ponta (o solenoide é infinito, mas essa abstração é necessária para a demonstração). Devido ao jeito que definimos $\Delta t$, o total de carga que passa pelo solenoide nesse intervalo de tempo equivale ao total de carga contido no solenoide então:}
+
+\textcolor{blue}{\begin{equation}
+    B_{\text{ext}} = \mu_0 \left(\frac{q_e n_e \cancel{L}}{\Delta t}\right) \left(\frac{N}{\cancel{L}}\right),
+\end{equation}}
+
+\textcolor{blue}{\begin{equation}
+    \Rightarrow B_{\text{ext}} = \mu_0 q_e n_e \left(\frac{N}{\Delta t}\right),
+\end{equation}}
+
+\noindent\textcolor{blue}{em que $q_e$ é a carga elementar e $n_e$ é a densidade linear de elétrons. Observe que, agora, os únicos valores desconhecidos na expressão do campo magnético do solenoide são $N$ e $\Delta t$. Para resolver isso, escrevemos esses termos em função da velocidade azimutal $v_e$ e de outros dados conhecidos:}
+
+\textcolor{blue}{\begin{equation}
+    v_e = \frac{L}{\Delta t}
+\end{equation}}
+
+\textcolor{blue}{\begin{equation}
+    \Rightarrow v_e = \frac{N(2\pi b)}{\Delta t}
+\end{equation}}
+
+\textcolor{blue}{\begin{equation}
+    \Rightarrow \frac{N}{\Delta t} = \frac{v_e}{2\pi b}.
+\end{equation}}
+
+\textcolor{blue}{Assim, a expressão do campo magnético gerado pelo solenoide é}
+
+\textcolor{blue}{\begin{equation}
+    \Rightarrow B_{\text{ext}} = \mu_0 q_e n_e \left(\frac{v_e}{2\pi b}\right),
+\end{equation}}
+
+
+\noindent\textcolor{blue}{a partir da qual podemos expressar a velocidade azimutal como}
+
+
+\textcolor{blue}{\begin{equation}
+    v_e = \frac{B_{\text{ext}} 2\pi b}{\mu_0 n_e q_e},
+\end{equation}}
+
+\noindent\textcolor{blue}{e, consequentemente, a velocidade angular $\omega$ como}
+
+\textcolor{blue}{\begin{equation}
+    \omega_e \cancel{b} = \frac{B_{\text{ext}} 2\pi \cancel{b}}{\mu_0 n_e q_e}
+\end{equation}}
+
+\textcolor{blue}{\begin{equation}
+    \Rightarrow\omega_e = \frac{B_{\text{ext}} 2\pi}{\mu_0 n_e q_e}.
+\end{equation}}
+
+Por fim, sabendo que $\omega = L/I$ e que o momento de inércia de um cilindro oco (como é o caso do solenoide) é $I = m b^2$, temos a seguinte expressão final para o momento angular inicial:
+
+\textcolor{blue}{\begin{equation}
+    \frac{L}{m b^2} = \frac{B_{\text{ext}} 2\pi}{\mu_0 n_e q_e}
+\end{equation}}
+
+\textcolor{blue}{\begin{equation}
+    \Rightarrow L = \frac{B_{\text{ext}} 2\pi~m b^2}{\mu_0 n_e q_e}
+\end{equation}}
+
+
+
+
 
 \section{Resultados e Conclusão}
 
 Em primeira instância, é importante ressaltar que o primeiro argumento proposto no enunciada da questão que motivou essa pesquisa está correto e o anel vai girar! Além dessa conclusão, fomos capazes de determinar a velocidade angular do anel, bem como o campo magnético inicial do problema.
 
-\nocite{leclair_2008}
+\nocite{leclair_2008, reville_2016}
 
 \pagebreak
 \onecolumn{
