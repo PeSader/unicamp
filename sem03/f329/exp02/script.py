@@ -44,7 +44,7 @@ def campo_magnetico_terra(C,
     return ((4*math.pi**2)*mI*C)/mu
 
 
-def regressao_linear(x, y, yerror) -> Tuple[float, float]:
+def regressao_linear(x, y, yerror) -> Tuple[ufloat, ufloat]:
 
     if len(x) != len(y):
         raise Exception("x e y precisam ter o mesmo numero de elementos")
