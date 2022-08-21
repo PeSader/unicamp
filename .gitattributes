@@ -1,1 +1,1 @@
-extracurriculares/secomp/*  filter=crypt diff=crypt merge=crypt
+sem05/mc404/** filter=git-crypt diff=git-crypt
