@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gaphor xmlns="http://gaphor.sourceforge.net/model" version="3.0" gaphor-version="2.11.0">
+<StyleSheet id="58d6989a-66f8-11ec-b4c8-0456e5e540ed"/>
+<Package id="58d6c2e8-66f8-11ec-b4c8-0456e5e540ed">
+<name>
+<val>Novo modelo</val>
+</name>
+<ownedDiagram>
+<reflist>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</reflist>
+</ownedDiagram>
+<ownedType>
+<reflist>
+<ref refid="1d0c7ec0-007f-11ed-8aea-792305443726"/>
+</reflist>
+</ownedType>
+</Package>
+<Diagram id="58d6c536-66f8-11ec-b4c8-0456e5e540ed">
+<element>
+<ref refid="58d6c2e8-66f8-11ec-b4c8-0456e5e540ed"/>
+</element>
+<name>
+<val>principal</val>
+</name>
+<ownedPresentation>
+<reflist>
+<ref refid="1d0a2d7f-007f-11ed-acca-792305443726"/>
+<ref refid="30b39a25-007f-11ed-8097-792305443726"/>
+<ref refid="35a2e1c4-007f-11ed-ac56-792305443726"/>
+<ref refid="38fc1cae-007f-11ed-af9c-792305443726"/>
+<ref refid="2ddb83d5-007f-11ed-8181-792305443726"/>
+<ref refid="41fb0cd4-007f-11ed-b49c-792305443726"/>
+<ref refid="515d579f-007f-11ed-9cc2-792305443726"/>
+<ref refid="582537ac-007f-11ed-9f39-792305443726"/>
+</reflist>
+</ownedPresentation>
+</Diagram>
+<State id="1d0989a6-007f-11ed-b6bc-792305443726">
+<container>
+<ref refid="1d0e02c1-007f-11ed-ab1f-792305443726"/>
+</container>
+<incoming>
+<reflist>
+<ref refid="5c371bd9-007f-11ed-a77d-792305443726"/>
+</reflist>
+</incoming>
+<name>
+<val>00</val>
+</name>
+<outgoing>
+<reflist>
+<ref refid="3e20675c-007f-11ed-894d-792305443726"/>
+</reflist>
+</outgoing>
+<presentation>
+<reflist>
+<ref refid="1d0a2d7f-007f-11ed-acca-792305443726"/>
+</reflist>
+</presentation>
+</State>
+<StateItem id="1d0a2d7f-007f-11ed-acca-792305443726">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 268.0, 207.0)</val>
+</matrix>
+<top-left>
+<val>(0.0, 0.0)</val>
+</top-left>
+<width>
+<val>50.0</val>
+</width>
+<height>
+<val>30.0</val>
+</height>
+<diagram>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</diagram>
+<subject>
+<ref refid="1d0989a6-007f-11ed-b6bc-792305443726"/>
+</subject>
+</StateItem>
+<StateMachine id="1d0c7ec0-007f-11ed-8aea-792305443726">
+<name>
+<val>State Machine</val>
+</name>
+<package>
+<ref refid="58d6c2e8-66f8-11ec-b4c8-0456e5e540ed"/>
+</package>
+<region>
+<reflist>
+<ref refid="1d0e02c1-007f-11ed-ab1f-792305443726"/>
+</reflist>
+</region>
+</StateMachine>
+<Region id="1d0e02c1-007f-11ed-ab1f-792305443726">
+<name>
+<val>Default Region</val>
+</name>
+<stateMachine>
+<ref refid="1d0c7ec0-007f-11ed-8aea-792305443726"/>
+</stateMachine>
+<subvertex>
+<reflist>
+<ref refid="1d0989a6-007f-11ed-b6bc-792305443726"/>
+<ref refid="30b35842-007f-11ed-a3a0-792305443726"/>
+<ref refid="35a2c99b-007f-11ed-9924-792305443726"/>
+<ref refid="38fbadcc-007f-11ed-a0d6-792305443726"/>
+</reflist>
+</subvertex>
+</Region>
+<TransitionItem id="2ddb83d5-007f-11ed-8181-792305443726">
+<diagram>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</diagram>
+<horizontal>
+<val>0</val>
+</horizontal>
+<subject>
+<ref refid="3e20675c-007f-11ed-894d-792305443726"/>
+</subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 364.0, 212.0)</val>
+</matrix>
+<points>
+<val>[(-46.0, 10.0), (12.0, 56.0)]</val>
+</points>
+<head-connection>
+<ref refid="1d0a2d7f-007f-11ed-acca-792305443726"/>
+</head-connection>
+<tail-connection>
+<ref refid="30b39a25-007f-11ed-8097-792305443726"/>
+</tail-connection>
+</TransitionItem>
+<State id="30b35842-007f-11ed-a3a0-792305443726">
+<container>
+<ref refid="1d0e02c1-007f-11ed-ab1f-792305443726"/>
+</container>
+<incoming>
+<reflist>
+<ref refid="3e20675c-007f-11ed-894d-792305443726"/>
+</reflist>
+</incoming>
+<name>
+<val>01</val>
+</name>
+<outgoing>
+<reflist>
+<ref refid="443a4357-007f-11ed-8575-792305443726"/>
+</reflist>
+</outgoing>
+<presentation>
+<reflist>
+<ref refid="30b39a25-007f-11ed-8097-792305443726"/>
+</reflist>
+</presentation>
+</State>
+<StateItem id="30b39a25-007f-11ed-8097-792305443726">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 351.0, 268.0)</val>
+</matrix>
+<top-left>
+<val>(0.0, 0.0)</val>
+</top-left>
+<width>
+<val>50.0</val>
+</width>
+<height>
+<val>30.0</val>
+</height>
+<diagram>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</diagram>
+<subject>
+<ref refid="30b35842-007f-11ed-a3a0-792305443726"/>
+</subject>
+</StateItem>
+<State id="35a2c99b-007f-11ed-9924-792305443726">
+<container>
+<ref refid="1d0e02c1-007f-11ed-ab1f-792305443726"/>
+</container>
+<incoming>
+<reflist>
+<ref refid="443a4357-007f-11ed-8575-792305443726"/>
+</reflist>
+</incoming>
+<name>
+<val>10</val>
+</name>
+<outgoing>
+<reflist>
+<ref refid="5339c2ff-007f-11ed-abb6-792305443726"/>
+</reflist>
+</outgoing>
+<presentation>
+<reflist>
+<ref refid="35a2e1c4-007f-11ed-ac56-792305443726"/>
+</reflist>
+</presentation>
+</State>
+<StateItem id="35a2e1c4-007f-11ed-ac56-792305443726">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 268.0, 333.5277777777777)</val>
+</matrix>
+<top-left>
+<val>(0.0, 0.0)</val>
+</top-left>
+<width>
+<val>50.0</val>
+</width>
+<height>
+<val>30.0</val>
+</height>
+<diagram>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</diagram>
+<subject>
+<ref refid="35a2c99b-007f-11ed-9924-792305443726"/>
+</subject>
+</StateItem>
+<State id="38fbadcc-007f-11ed-a0d6-792305443726">
+<container>
+<ref refid="1d0e02c1-007f-11ed-ab1f-792305443726"/>
+</container>
+<incoming>
+<reflist>
+<ref refid="5339c2ff-007f-11ed-abb6-792305443726"/>
+</reflist>
+</incoming>
+<name>
+<val>11</val>
+</name>
+<outgoing>
+<reflist>
+<ref refid="5c371bd9-007f-11ed-a77d-792305443726"/>
+</reflist>
+</outgoing>
+<presentation>
+<reflist>
+<ref refid="38fc1cae-007f-11ed-af9c-792305443726"/>
+</reflist>
+</presentation>
+</State>
+<StateItem id="38fc1cae-007f-11ed-af9c-792305443726">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 134.0, 268.0)</val>
+</matrix>
+<top-left>
+<val>(46.0, 0.0)</val>
+</top-left>
+<width>
+<val>50.0</val>
+</width>
+<height>
+<val>30.0</val>
+</height>
+<diagram>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</diagram>
+<subject>
+<ref refid="38fbadcc-007f-11ed-a0d6-792305443726"/>
+</subject>
+</StateItem>
+<Transition id="3e20675c-007f-11ed-894d-792305443726">
+<container>
+<ref refid="1d0e02c1-007f-11ed-ab1f-792305443726"/>
+</container>
+<guard>
+<ref refid="3e248927-007f-11ed-8676-792305443726"/>
+</guard>
+<name>
+<val></val>
+</name>
+<presentation>
+<reflist>
+<ref refid="2ddb83d5-007f-11ed-8181-792305443726"/>
+</reflist>
+</presentation>
+<source>
+<ref refid="1d0989a6-007f-11ed-b6bc-792305443726"/>
+</source>
+<target>
+<ref refid="30b35842-007f-11ed-a3a0-792305443726"/>
+</target>
+</Transition>
+<Constraint id="3e248927-007f-11ed-8676-792305443726">
+<transition>
+<ref refid="3e20675c-007f-11ed-894d-792305443726"/>
+</transition>
+</Constraint>
+<TransitionItem id="41fb0cd4-007f-11ed-b49c-792305443726">
+<diagram>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</diagram>
+<horizontal>
+<val>0</val>
+</horizontal>
+<subject>
+<ref refid="443a4357-007f-11ed-8575-792305443726"/>
+</subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 441.0, 297.0)</val>
+</matrix>
+<points>
+<val>[(-65.0, 1.0), (-123.0, 53.527777777777715)]</val>
+</points>
+<head-connection>
+<ref refid="30b39a25-007f-11ed-8097-792305443726"/>
+</head-connection>
+<tail-connection>
+<ref refid="35a2e1c4-007f-11ed-ac56-792305443726"/>
+</tail-connection>
+</TransitionItem>
+<Transition id="443a4357-007f-11ed-8575-792305443726">
+<container>
+<ref refid="1d0e02c1-007f-11ed-ab1f-792305443726"/>
+</container>
+<guard>
+<ref refid="443a6629-007f-11ed-9bda-792305443726"/>
+</guard>
+<presentation>
+<reflist>
+<ref refid="41fb0cd4-007f-11ed-b49c-792305443726"/>
+</reflist>
+</presentation>
+<source>
+<ref refid="30b35842-007f-11ed-a3a0-792305443726"/>
+</source>
+<target>
+<ref refid="35a2c99b-007f-11ed-9924-792305443726"/>
+</target>
+</Transition>
+<Constraint id="443a6629-007f-11ed-9bda-792305443726">
+<transition>
+<ref refid="443a4357-007f-11ed-8575-792305443726"/>
+</transition>
+</Constraint>
+<TransitionItem id="515d579f-007f-11ed-9cc2-792305443726">
+<diagram>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</diagram>
+<horizontal>
+<val>0</val>
+</horizontal>
+<subject>
+<ref refid="5339c2ff-007f-11ed-abb6-792305443726"/>
+</subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 266.0, 368.0)</val>
+</matrix>
+<points>
+<val>[(2.0, -17.472222222222285), (-61.0, -70.0)]</val>
+</points>
+<head-connection>
+<ref refid="35a2e1c4-007f-11ed-ac56-792305443726"/>
+</head-connection>
+<tail-connection>
+<ref refid="38fc1cae-007f-11ed-af9c-792305443726"/>
+</tail-connection>
+</TransitionItem>
+<Transition id="5339c2ff-007f-11ed-abb6-792305443726">
+<container>
+<ref refid="1d0e02c1-007f-11ed-ab1f-792305443726"/>
+</container>
+<guard>
+<ref refid="5339d46e-007f-11ed-9b9f-792305443726"/>
+</guard>
+<presentation>
+<reflist>
+<ref refid="515d579f-007f-11ed-9cc2-792305443726"/>
+</reflist>
+</presentation>
+<source>
+<ref refid="35a2c99b-007f-11ed-9924-792305443726"/>
+</source>
+<target>
+<ref refid="38fbadcc-007f-11ed-a0d6-792305443726"/>
+</target>
+</Transition>
+<Constraint id="5339d46e-007f-11ed-9b9f-792305443726">
+<transition>
+<ref refid="5339c2ff-007f-11ed-abb6-792305443726"/>
+</transition>
+</Constraint>
+<TransitionItem id="582537ac-007f-11ed-9f39-792305443726">
+<diagram>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</diagram>
+<horizontal>
+<val>0</val>
+</horizontal>
+<subject>
+<ref refid="5c371bd9-007f-11ed-a77d-792305443726"/>
+</subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 183.0, 262.0)</val>
+</matrix>
+<points>
+<val>[(22.0, 6.0), (85.0, -40.0)]</val>
+</points>
+<head-connection>
+<ref refid="38fc1cae-007f-11ed-af9c-792305443726"/>
+</head-connection>
+<tail-connection>
+<ref refid="1d0a2d7f-007f-11ed-acca-792305443726"/>
+</tail-connection>
+</TransitionItem>
+<Transition id="5c371bd9-007f-11ed-a77d-792305443726">
+<container>
+<ref refid="1d0e02c1-007f-11ed-ab1f-792305443726"/>
+</container>
+<guard>
+<ref refid="5c3a9e6c-007f-11ed-9fc1-792305443726"/>
+</guard>
+<presentation>
+<reflist>
+<ref refid="582537ac-007f-11ed-9f39-792305443726"/>
+</reflist>
+</presentation>
+<source>
+<ref refid="38fbadcc-007f-11ed-a0d6-792305443726"/>
+</source>
+<target>
+<ref refid="1d0989a6-007f-11ed-b6bc-792305443726"/>
+</target>
+</Transition>
+<Constraint id="5c3a9e6c-007f-11ed-9fc1-792305443726">
+<transition>
+<ref refid="5c371bd9-007f-11ed-a77d-792305443726"/>
+</transition>
+</Constraint>
+</gaphor>
