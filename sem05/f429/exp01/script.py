@@ -6,8 +6,9 @@ Created on Wed Aug 31 18:31:00 2022
 """
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 import os
-from typing import List
+from typing import List, Tuple
 
 DATA_DIR = "data"
 IMG_DIR = "img"
@@ -33,6 +34,7 @@ def analyze_data():
                 "Menor divisão da fase (s)": "mindiv_phi",
                 "Capacitância (F)": "C",
                 "Frequência de corte teórica (Hz)": "fc",
+                "Menor divisão da frequência (Hz)": "mindiv_fc",
             },
             inplace=True,
         )
@@ -75,8 +77,37 @@ def phase_uncertainty(phase: float, mindiv: float):
     return combine([u_peak, u_reading])
 
 
+def period_uncertainty(period: float, u_freq: float) -> float:
+    return ((period**4) * u_freq) ** (1 / 2)
+
+
+def freq_uncertainty(mindiv: float) -> float:
+    return rectangular(mindiv)
+
+
 def ratio_uncertainty(a: float, u_a: float, b: float, u_b: float):
     return ((1 / b**2) * (u_a + (a**2 * u_b) / b**2)) ** (1 / 2)
+
+
+def linear_fit(x, y, yerror: float) -> Tuple[float, float, float, float]:
+    n = len(x)
+    sum_x = np.sum(x)
+    sum_y = np.sum(y)
+
+    sum_xy = 0
+    for i in range(n):
+        sum_xy += x[i] * y[i]
+
+    sum_x2 = 0
+    for i in range(n):
+        sum_x2 += x[i] ** 2
+
+    delta = n * sum_x2 - sum_x**2
+    a = (n * sum_xy - sum_x * sum_y) / delta
+    u_a = (n / delta) ** (1 / 2) * yerror
+    b = (sum_y * sum_x2 - sum_xy * sum_x) / delta
+    u_b = (sum_x2 / delta) ** (1 / 2) * yerror
+    return a, u_a, b, u_b
 
 
 def analyze_data_part01(df: pd.DataFrame):
@@ -122,7 +153,7 @@ def analyze_data_part01(df: pd.DataFrame):
     ax2.set_xlabel("Frequência (HZ)")
     ax2.set_ylabel("Diferença de Fase (s)")
     plt.tight_layout()
-    plt.savefig(os.path.join("plots", "part01_phi.png"), dpi=DPI)
+    plt.savefig(os.path.join(IMG_DIR, "plots", "part01_phi.png"), dpi=DPI)
 
     # salvar tabela alterada
     df["f (Hz)"] = df["f"]
@@ -138,8 +169,8 @@ def analyze_data_part01(df: pd.DataFrame):
 
 def analyze_data_part02(df: pd.DataFrame):
     # gráfico de razão de tensões
-    _, ax = plt.subplots(1, 1)
-    ax.errorbar(
+    _, ax1 = plt.subplots(1, 1)
+    ax1.errorbar(
         x=df["C"],
         y=df["V2V1"],
         yerr=df["u_V2V1"],
@@ -152,14 +183,53 @@ def analyze_data_part02(df: pd.DataFrame):
         ecolor="black",
         label="Experimental",
     )
-    ax.axhline(y=0.7, color="green", alpha=0.5, linestyle="--", label="Teórico")
-    ax.set_title("Razão entre Tensões de Entrada e Saída por Capacitância (F)")
-    ax.set_xlabel("Capacitância (F)")
-    ax.set_ylabel("V2V1")
-    ax.set_ylim([0.5, 0.9])
-    ax.legend(loc="best")
+    ax1.axhline(y=0.7, color="green", alpha=0.5, linestyle="--", label="Teórico")
+    ax1.set_title("Razão entre Tensões de Entrada e Saída por Capacitância (F)")
+    ax1.set_xlabel("Capacitância (F)")
+    ax1.set_ylabel("V2/V1")
+    ax1.set_ylim([0.5, 0.9])
+    ax1.legend(loc="best")
     plt.tight_layout()
-    plt.savefig(os.path.join("plots", "part02_V2V1.png"), dpi=DPI)
+    plt.savefig(os.path.join(IMG_DIR, "plots", "part02_V2V1.png"), dpi=DPI)
+
+    # gráfico de frequências de corte
+    df["Tc"] = 1 / df["fc"]
+    df["u_fc"] = freq_uncertainty(df["mindiv_fc"])
+    df["u_Tc"] = period_uncertainty(df["Tc"], df["u_fc"])
+    _, ax2 = plt.subplots(1, 1)
+    ax2.set_title("Inverso da Frequência de Corte (s) por Capacitância (F)")
+    ax2.set_xlabel("Capacitância (F)")
+    ax2.set_ylabel("$1/f_c$")
+    ax2.errorbar(
+        x=df["C"],
+        y=df["Tc"],
+        yerr=df["u_Tc"],
+        fmt="o",
+        elinewidth=1,
+        capsize=3,
+        capthick=1,
+        ms=3,
+        c="purple",
+        ecolor="black",
+        label="Dados Experimentais",
+    )
+    a, u_a, b, u_b = linear_fit(df["C"], df["Tc"], max(df["u_Tc"]))
+    R = a / (2 * np.pi)
+    u_R = u_a / (2 * np.pi)
+    print(f"a = {a} ± {u_a}")
+    print(f"b = {b} ± {u_b}")
+    print(f"R = {R} ± {u_R}")
+    ax2.plot(
+        df["C"],
+        a * df["C"] + b,
+        c="purple",
+        alpha=0.3,
+        linestyle=":",
+        label="Ajuste Linear",
+    )
+    ax2.legend(loc="best")
+    plt.tight_layout()
+    plt.savefig(os.path.join(IMG_DIR, "plots", "part02_Tc.png"), dpi=DPI)
 
     # salvar tabela alterada
     df["f (Hz)"] = df["fc"]
