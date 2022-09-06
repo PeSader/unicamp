@@ -1,3 +1,7 @@
+# Binaries
+*.x
+*.o
+
 # Latex
 *.aux
 *.bbl
